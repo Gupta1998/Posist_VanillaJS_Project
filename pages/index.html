@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="form-container hide">
+        <div class="title">
+            <h3>login</h3>
+        </div>
+        <form class="login-form" data-id="form">
+            <div class="form-group">
+                <label class="form-label">username or email</label>
+                <input class="form-input" type="text" name="name" data-id="username">
+            </div>
+            <div class="form-group">
+                <label class="form-label">password</label>
+                <input class="form-input" type="password" name="password" data-id="pass">
+            </div>
+            <div class="error">
+                <p class="error-msg hide">invalid username or password!</p>
+            </div>
+            <div class="form-group">
+                <input class="submit-btn" type="submit" value="Login">
+            </div>
+            <div class="error">
+                <p>Don't have an account?<span class="already registerShow">Register</span></p>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="form-container">
+        <div class="title">
+            <h3>register</h3>
+        </div>
+        <form class="register-form" data-id="form">
+            <div class="form-group">
+                <label class="form-label">Name</label>
+                <input class="form-input" type="text" name="name" onchange="validation(this); return true;">
+            </div>
+            <div class="error">
+                <p class="name-error hide">invalid</p>
+            </div>
+            <div class="form-group">
+                <label class="form-label">email</label>
+                <input class="form-input" type="text" name="email" onchange="validation(this)">
+            </div>
+            <div class="error">
+                <p class="email-error hide">invalid</p>
+            </div>
+            <div class="form-group">
+                <label class="form-label">mobile no.</label>
+                <input class="form-input" type="text" name="mobile" onchange="validation(this)">
+            </div>
+            <div class="error">
+                <p class="mobile-error hide">invalid</p>
+            </div>
+            <div class="form-group">
+                <label class="form-label">password</label>
+                <input class="form-input" type="password" name="password" onchange="validation(this)">
+            </div>
+            <div class="error">
+                <p class="pass-error hide">invalid</p>
+            </div>
+            <div class="form-group">
+                <label class="form-label">confirm password</label>
+                <input class="form-input" type="password" name="confirmPassword" onchange="validation(this)">
+            </div>
+            <div class="error">
+                <p class="password-error hide">invalid</p>
+            </div>
+            <div class="form-group">
+                <input class="submit-btn" type="submit" value="Signup" />
+            </div>
+            <div class="error">
+                <p>Already have an account?<span class="already loginShow">Login</span></p>
+            </div>
+        </form>
+    </div>
+
+    <script src="../js/app.js"></script>
+</body>
+
+</html>
