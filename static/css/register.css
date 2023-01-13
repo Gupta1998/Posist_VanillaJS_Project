@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.page-container {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* overflow: hidden; */
+}
+
+.svg {
+    display: flex;
+    align-items: center;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+}
+
+.svg img {
+    display: block;
+    width: 100%;
+    object-fit: cover;    
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+    width: 500px;
+    /* height: 500px; */
+    background-color: #f2f2f2;
+    /* padding: 2em; */
+    border-radius: 5px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.form-group label {
+    font-size: 22px;
+    text-transform: capitalize;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    border: none;
+    width: 30em;
+    padding: 1em;
+    border-radius: 5px;
+}
+
+.form-group input[type="submit"] {
+    border: 2px solid black;
+    width: 100px;
+    height: 50px;
+    font-size: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-group input[type="submit"]:hover {
+    background-color: white;
+}
+
+.form span {
+    color: red;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+.info span {
+    color: blue;
+    cursor: pointer;
+}
+
+.info span:hover {
+    border-bottom: 2px solid blue;
+}
+
+
+/* new  */
+/* This is our style for the invalid fields */
+input.invalid {
+    /* border-color: #900; */
+    background-color: #fdd;
+}
+
+input:focus.invalid {
+    outline: none;
+}
+
+/* This is the style of our error messages */
+.error {
+    /* width: 100%; */
+    padding: 0;
+    font-size: 80%;
+    color: white;
+    /* background-color: #900; */
+    /* border-radius: 0 0 5px 5px;
+    box-sizing: border-box; */
+}
+
+.error.active {
+    padding: 0.3em;
+}

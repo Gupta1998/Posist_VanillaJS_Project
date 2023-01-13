@@ -26,6 +26,12 @@ body {
     border-left: 2px solid black;
 }
 
+.svg img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
 .form-container {
     display: flex;
     flex-direction: column;
@@ -40,7 +46,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2em;
+    gap: 0.5em;
     width: 500px;
     height: 500px;
     background-color: #f2f2f2;

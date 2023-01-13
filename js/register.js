@@ -17,13 +17,57 @@ const mobileRegEx = /^[0]?[789]\d{9}$/;
 
 const users = [];
 
-checkOnLoad();
-checkInput();
+// checkOnLoad();
+// checkInput();
+function validate() {
+  username.addEventListener("input", (e) => {
+    e.preventDefault();
+    if (username.value.includes("@")) {
+      nameError.textContent = "Invalid name";
+    } else {
+      nameError.textContent = "";
+    }
+  });
+  email.addEventListener("input", (e) => {
+    e.preventDefault();
+    if (!emailRegExp.test(email.value)) {
+      emailError.textContent = "Invalid email";
+    } else {
+      emailError.textContent = "";
+    }
+  });
+  mobile.addEventListener("input", (e) => {
+    e.preventDefault();
+    if (!mobileRegEx.test(mobile.value)) {
+      mobileError.textContent = "Invalid number";
+    } else {
+      mobileError.textContent = "";
+    }
+  });
+  password.addEventListener("input", (e) => {
+    e.preventDefault();
+    if (!passRegEx.test(password.value)) {
+      passError.textContent =
+        "Password must be 6-16 characters long and must contain a numbers and specail character";
+    } else {
+      passError.textContent = "";
+    }
+  });
+  confirmPassword.addEventListener("input", (e) => {
+    e.preventDefault();
+    if (confirmPassword.value !== password.value) {
+      cofirmError.textContent = "Password does not match!";
+    } else {
+      confirmError.textContent = "";
+    }
+  });
+}
+validate();
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  checkOnSubmit();
+  // checkOnSubmit();
   let user = {
     username: username.value,
     email: email.value,
@@ -31,11 +75,14 @@ form.addEventListener("submit", (e) => {
     password: confirmPassword.value,
   };
 
-  if (!checkAlreadyExists(user)) {
-    addEntry(user);
-    document.querySelector(".success").textContent = "Successfully registered!";
-    window.location.href = "index.html";
-  }
+  // if (!checkAlreadyExists(user)) {
+  //   addEntry(user);
+  //   document.querySelector(".success").textContent = "Successfully registered!";
+  //   window.location.href = "index.html";
+  // }
+  addEntry();
+  document.querySelector(".success").textContent = "Successfully registered!";
+  window.location.href = "index.html";
 });
 
 function checkAlreadyExists(user) {
