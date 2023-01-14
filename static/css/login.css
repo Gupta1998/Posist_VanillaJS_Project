@@ -23,7 +23,6 @@ body {
     display: flex;
     align-items: center;
     border-right: 2px solid black;
-    border-left: 2px solid black;
 }
 
 .svg img {
@@ -35,22 +34,22 @@ body {
 .form-container {
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
+    gap: 1em;
     justify-content: center;
     align-items: center;
 }
 
 .form {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     gap: 0.5em;
     width: 500px;
     height: 500px;
     background-color: #f2f2f2;
-    /* padding: 2em; */
+    padding: 2em;
     border-radius: 5px;
 }
 
@@ -99,7 +98,7 @@ body {
     color: red;
 }
 
-.success {
+.form span.success {
     color: green;
 }
 

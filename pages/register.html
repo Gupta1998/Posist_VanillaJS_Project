@@ -12,30 +12,30 @@
         <div class="form-container">
             <h1>Signup</h1>
             <form class="form">
-                <span class="success"></span>
+                <span class="success" id="success"></span>
                 <div class="form-group">
-                    <label class="form-label">Name</label>
-                    <input type="text" name="name" id="name">
+                    <label class="form-label">Username</label>
+                    <input type="text" name="name" id="name" onblur="checkOnBlur(this)">
                 </div>
                 <span class="error" id="name-error" aria-live="polite"></span>
                 <div class="form-group">
                     <label class="form-label">email</label>
-                    <input type="text" name="email" id="email">
+                    <input type="text" name="email" id="email" onblur="checkOnBlur(this)">
                 </div>
                 <span class="error" id="email-error" aria-live="polite"></span>
                 <div class="form-group">
                     <label class="form-label">mobile no.</label>
-                    <input type="text" name="mobile" id="mobile">
+                    <input type="text" name="mobile" id="mobile" onblur="checkOnBlur(this)">
                 </div>
                 <span class="error" id="mobile-error" aria-live="polite"></span>
                 <div class="form-group">
                     <label class="form-label">password</label>
-                    <input type="password" name="password" id="password">
+                    <input type="password" name="password" id="password" onblur="checkOnBlur(this)">
                 </div>
                 <span class="error" id="password-error" aria-live="polite"></span>
                 <div class="form-group">
                     <label class="form-label">confirm password</label>
-                    <input type="password" name="confirmPassword" id="confirmPassword">
+                    <input type="password" name="confirmPassword" id="confirmPassword" onblur="checkOnBlur(this)">
                 </div>
                 <span class="error" id="confirm-error" aria-live="polite"></span>
                 <div class="form-group">

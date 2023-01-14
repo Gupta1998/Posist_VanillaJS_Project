@@ -20,9 +20,20 @@ body {
 header {
     height: 80px;
     background-color: #f2f2f2;
-    display: flex;
+    display: flex;;
     justify-content: space-between;
     align-items: center;
+}
+
+#container {
+    width: 20em;
+}
+
+#container input {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5em;
 }
 
 header > h3 {
@@ -58,22 +69,108 @@ nav ul li a {
     text-decoration: none;
 }
 
-.title {
-margin-top: 2em;
-text-align: center;
+.create-task {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    text-align: center;
+    padding: 10px 10px;
 }
 
-.body {
+.task-area {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.task-group {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-group input {
+    height: 30px;
+    background-color: #f2f2f2;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.task-group textarea {
+    width: 300px;
+    height: 50px;
+    background-color: #f2f2f2;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+
+.btn-group {
+    display: flex;
+        gap: 1em;
+        justify-content: center;
+        align-items: center;
+}
+
+.btn-group button {
+    height: 40px;
+    background-color: #f2f2f2;
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+        cursor: pointer;
+}
+
+.btn-group button:hover {
+    border: 1px solid black;
+}
+
+.user-tasks {
+    width: 100%;
+    height: 100%;
+    padding: 5em;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px 20px;
+    align-self: center;
+    justify-items: center;
+    background-color: #f2f2f2;
+}
+
+.card {
+    /* border: 1px solid black; */
+    width: 300px;
+    height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    gap: 0.5em;
-    /* border: 1px solid black; */
-    width: 60%;
-    height: 120px;
-    margin: 2em auto;
-    padding: 2em;
-    box-shadow: 10px 10px 8px #f2f2f2;
+    border-radius: 10px;
+    background-color: white;
 }
 
+.body {
+    height: 60%;
+    text-align: center;
+    padding: 20px 5px;
+    /* border-bottom: 1px solid grey; */
+}
+
+.title {
+    text-align: center;
+    padding: 10px;
+}
+
+.triggerUpdate, .triggerDelete {
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.triggerUpdate:hover,
+.triggerDelete:hover {
+    border: 1px solid black;
+}

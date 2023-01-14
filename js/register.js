@@ -4,11 +4,13 @@ const email = document.getElementById("email");
 const mobile = document.getElementById("mobile");
 const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmPassword");
+const errors = [...document.querySelectorAll(".error")];
 let emailError = document.querySelector("#email-error");
 let nameError = document.querySelector("#name-error");
 let mobileError = document.querySelector("#mobile-error");
 let passError = document.querySelector("#password-error");
 let confirmError = document.querySelector("#confirm-error");
+let inputs = [...document.querySelectorAll("input")];
 
 const emailRegExp =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -17,8 +19,60 @@ const mobileRegEx = /^[0]?[789]\d{9}$/;
 
 const users = [];
 
-// checkOnLoad();
-// checkInput();
+if (localStorage.getItem("users") === null) {
+  let obj = {
+    username: "bob",
+    email: "bob@example.com",
+    mobile: "9876598456",
+    password: "bob@123",
+  };
+  users.push(obj);
+  localStorage.setItem("users", JSON.stringify(users));
+}
+
+checkOnLoad();
+checkInput();
+validate();
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let user = {
+    username: username.value,
+    email: email.value,
+    mobile: mobile.value,
+    password: confirmPassword.value,
+  };
+
+  if (isInputEmpty()) {
+    document.querySelector("#success").style.color = "red";
+    document.querySelector("#success").textContent =
+      "All Fields are mandatory!";
+    // } else if (!isInputEmpty()) {
+    //   checkAlreadyExists(user);
+  } else {
+    addEntry(user);
+    document.querySelector("#success").textContent = "Successfully Registered!";
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 1000);
+  }
+});
+
+function beforeSubmit() {
+  const result = errors.some((error) => error.textContent != "");
+  if (result) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function isInputEmpty() {
+  const result = inputs.some((input) => input.value.length == 0);
+  return result;
+}
+
 function validate() {
   username.addEventListener("input", (e) => {
     e.preventDefault();
@@ -55,58 +109,38 @@ function validate() {
   });
   confirmPassword.addEventListener("input", (e) => {
     e.preventDefault();
-    if (confirmPassword.value !== password.value) {
-      cofirmError.textContent = "Password does not match!";
+    if (!(confirmPassword.value === password.value)) {
+      confirmError.textContent = "Password does not match!";
     } else {
       confirmError.textContent = "";
     }
   });
 }
-validate();
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  // checkOnSubmit();
-  let user = {
-    username: username.value,
-    email: email.value,
-    mobile: mobile.value,
-    password: confirmPassword.value,
-  };
-
-  // if (!checkAlreadyExists(user)) {
-  //   addEntry(user);
-  //   document.querySelector(".success").textContent = "Successfully registered!";
-  //   window.location.href = "index.html";
-  // }
-  addEntry();
-  document.querySelector(".success").textContent = "Successfully registered!";
-  window.location.href = "index.html";
-});
 
 function checkAlreadyExists(user) {
   const values = JSON.parse(localStorage.getItem("users"));
-
-  values.forEach((value) => {
-    if (
+  console.log(values);
+  const result1 = values.some((value) => {
+    console.log(value);
+    return (
       value.username === user.username &&
       value.email === user.email &&
       value.mobile === user.mobile &&
       value.password === user.password
-    ) {
-      document.querySelector(".success").textContent =
-        "User already exists, Please login";
-      console.log("exists");
-      return true;
-    } else if (value.username === user.username || value.email === user.email) {
-      document.querySelector(".success").textContent =
-        "Username already exists";
-      console.log("username exists");
-      return true;
-    }
+    );
   });
-  return false;
+  const result2 = values.some((value) => {
+    return value.username === user.username || value.email === user.email;
+  });
+  if (result1) {
+    document.querySelector(".success").textContent =
+      "User already exists, Please login!";
+    console.log("exists");
+  } else if (result2) {
+    document.querySelector(".success").textContent =
+      "Username or email already exists!";
+    console.log("username exists");
+  }
 }
 
 function addEntry(user) {
@@ -261,4 +295,8 @@ function checkOnSubmit() {
     confirmError.textContent = "";
     confirmError.className = "error";
   }
+}
+
+function checkOnBlur(target) {
+  target.parentElement.nextElementSibling.textContent = "";
 }

@@ -5,12 +5,22 @@ const data = JSON.parse(localStorage.getItem("users"));
 
 function validateUser() {
   for (user of data) {
-    if (username.value === user.username && password.value === user.password) {
+    if (
+      (username.value === user.username || username.value === user.email) &&
+      password.value === user.password
+    ) {
       document.querySelector(".submit-btn").setAttribute("disabled", "false");
       document.querySelector(".error").textContent = "";
-      document.querySelector(".success").textContent = "Logged Successfully!";
-      localStorage.setItem("authenticated", true);
-      window.location.href = "home.html";
+      document.querySelector("#success").textContent =
+        "Logged in Successfully!";
+      let loginObj = {
+        ...user,
+        isLoggedIn: true,
+      };
+      localStorage.setItem("auth", JSON.stringify(loginObj));
+      setTimeout(() => {
+        window.location.href = "home.html";
+      }, 1000);
       break;
     } else {
       document.querySelector(".success").textContent = "";

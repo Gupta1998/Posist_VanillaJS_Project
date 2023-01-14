@@ -11,18 +11,33 @@
     <div class="page-container">
         <header>
             <h3>LOGO</h3>
+            <div id="container">
+                <input id="searchInput" type="text" placeholder='Search by "Author"'>
+            </div>
             <nav>
                 <ul>
                     <li class="profile">
-                        <h3>User</h3>
+                        <h3 class="username">User</h3>
                         <img src="../static/profile.jpg" class="avatar">
                     </li>
                     <li><a href="#" onclick="logout()">Logout</a></li>
                 </ul>
             </nav>
         </header>
-        <section class="user-posts">
-            <h2 class="title">Your Posts</h2>
+        <div class="create-task">
+            <h2>Create Task</h2>
+            <div class="task-area">
+                <div class="task-group">
+                    <input type="text" name="title" id="title" placeholder="Title">
+                    <textarea name="body" cols="30" rows="10" id="body" placeholder="Enter your task "></textarea>
+                </div>
+                <div class="btn-group">
+                    <button type="button" id='create'>Create Task</button>
+                    <button type="button" id="update">Update Task</button>
+                </div>
+            </div>
+        </div>
+        <section class="user-tasks">
         </section>
     </div>
 </body>
