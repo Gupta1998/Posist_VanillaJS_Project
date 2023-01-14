@@ -6,9 +6,6 @@ const create = document.getElementById("create");
 const update = document.getElementById("update");
 const userTasks = document.querySelector(".user-tasks");
 const username = document.querySelector(".username");
-let data = JSON.parse(localStorage.getItem(user.email));
-let index;
-let filteredData;
 
 // localStorage.clear();
 username.innerHTML = user.username;
@@ -25,6 +22,7 @@ if (localStorage.getItem(user.email) === null) {
   localStorage.setItem(user.email, JSON.stringify(tasks));
 }
 
+let data = JSON.parse(localStorage.getItem(user.email));
 loadData();
 function loadData() {
   data.forEach((element) => {
@@ -37,7 +35,7 @@ function loadData() {
       <button type="button" class="triggerUpdate">Modify</button>
       <button type="button" class="triggerDelete">Delete</button>
       </div>
-    `;
+      `;
     userTasks.appendChild(taskElement);
   });
 }
@@ -63,24 +61,30 @@ function createTask(user) {
   window.location.reload();
 }
 
+// update task
+let index;
+let filteredData;
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("triggerUpdate")) {
-    let taskTitle = e.target.previousSibling.innerHTML;
+    let taskTitle = e.target.previousSibling.previousSibling.innerHTML;
     console.log(taskTitle);
     let taskBody = [
       ...e.target.parentElement.previousSibling.previousSibling.childNodes,
     ][0].outerText;
-
+    console.log(taskBody);
     title.value = taskTitle;
     body.value = taskBody;
+
     index = data.findIndex((element) => {
-      return element.title === title.value && element.body === body.value;
+      return element.title === taskTitle && element.body === taskBody;
     });
+    // console.log(index);
     filteredData = data.filter((element) => {
-      return element.title !== title.value && element.body !== body.value;
+      return element.title !== taskTitle && element.body !== taskBody;
     });
+    // console.log(filteredData);
     localStorage.setItem(user.email, JSON.stringify(filteredData));
-    console.log(filteredData);
+    create.disabled = "true";
   }
 });
 
@@ -91,7 +95,8 @@ function updateTask() {
   };
 
   const data = JSON.parse(localStorage.getItem(user.email));
-
+  console.log(data);
+  console.log(index);
   data.splice(index, 0, updatedTask);
   console.log(data);
   localStorage.setItem(user.email, JSON.stringify(data));
